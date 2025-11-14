@@ -1,7 +1,7 @@
 "use client";
 
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "../ui/breadcrumb";
-import { Section } from "./craft";
+import { Heading, Section } from "./craft";
 import { usePathname } from "next/navigation";
 import React from "react";
 
@@ -28,7 +28,7 @@ function PageHeader({ title, breadcrumbs = true }: PageHeaderProps) {
     );
 
     return (
-        <Section className="bg-primary text-primary-foreground">
+        <Section variant="primary">
             {breadcrumbs && (
                 <Breadcrumb className="mb-4">
                     <BreadcrumbList>
@@ -54,7 +54,9 @@ function PageHeader({ title, breadcrumbs = true }: PageHeaderProps) {
                     </BreadcrumbList>
                 </Breadcrumb>
             )}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl">{title}</h1>
+            <Heading size="h2">
+                <div dangerouslySetInnerHTML={{ __html: title }} />
+            </Heading>
         </Section>
     );
 }

@@ -59,7 +59,7 @@ function NavigationMenuItem({
 }
 
 const navigationMenuTriggerStyle = cva(
-  "group inline-flex h-9 w-max items-center justify-center rounded-md bg-menubar-trigger px-4 py-2 text-sm font-medium hover:bg-menubar-trigger-accent hover:text-menubar-trigger-accent-foreground focus:bg-menubar-trigger-accent focus:text-menubar-trigger-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=open]:hover:bg-menubar-trigger-accent data-[state=open]:text-menubar-trigger-accent-foreground data-[state=open]:focus:bg-menubar-trigger-accent data-[state=open]:bg-menubar-trigger-accent/50 focus-visible:ring-ring/50 outline-none transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1"
+  "group inline-flex h-9 w-max items-center justify-center rounded-md bg-menubar-trigger px-4 py-2 font-medium hover:bg-menubar-trigger-accent hover:text-menubar-trigger-accent-foreground focus:bg-menubar-trigger-accent focus:text-menubar-trigger-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=open]:hover:bg-menubar-trigger-accent data-[state=open]:text-menubar-trigger-accent-foreground data-[state=open]:focus:bg-menubar-trigger-accent data-[state=open]:bg-menubar-trigger-accent/50 focus-visible:ring-ring/50 outline-none transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1"
 )
 
 function NavigationMenuTrigger({
@@ -129,7 +129,7 @@ function NavigationMenuLink({
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
       className={cn(
-        "data-[active=true]:focus:bg-menubar-popover-accent data-[active=true]:hover:bg-menubar-popover-accent data-[active=true]:bg-menubar-popover-accent/50 data-[active=true]:text-menubar-popover-accent-foreground hover:bg-menubar-popover-accent hover:text-menubar-popover-accent-foreground focus:bg-menubar-popover-accent focus:text-menubar-popover-accent-foreground focus-visible:ring-ring/50 [&_svg:not([class*='text-'])]:text-muted-foreground flex flex-col gap-1 rounded-sm p-2 text-sm transition-all outline-none focus-visible:ring-[3px] focus-visible:outline-1 [&_svg:not([class*='size-'])]:size-4",
+        "data-[active=true]:focus:bg-menubar-popover-accent data-[active=true]:hover:bg-menubar-popover-accent data-[active=true]:bg-menubar-popover-accent/50 data-[active=true]:text-menubar-popover-accent-foreground hover:bg-menubar-popover-accent hover:text-menubar-popover-accent-foreground focus:bg-menubar-popover-accent focus:text-menubar-popover-accent-foreground focus-visible:ring-ring/50 [&_svg:not([class*='text-'])]:text-muted-foreground flex flex-col gap-1 rounded-sm p-2 transition-all outline-none focus-visible:ring-[3px] focus-visible:outline-1 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}

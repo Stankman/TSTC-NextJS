@@ -1,15 +1,15 @@
 "use client";
 
 import { Button } from "../ui/button";
-import { Container } from "./craft";
+import { Container, Heading } from "./craft";
 import Image from "next/image";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 
 export default function Footer() {
     return (
-        <footer className="bg-primary text-primary-foreground py-6">
+        <footer className="bg-background-secondary text-foreground-secondary py-6">
             <Container>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl">Your better life starts here.</h2>
+                <Heading size="h2">Your better life starts here.</Heading>
                 <div className="grid md:grid-cols-3 gap-4 my-6 md:my-8 lg:my-10">
                     <Button variant="accent" size="lg">Apply Now</Button>
                     <Button variant="outline" size="lg">Request Info</Button>

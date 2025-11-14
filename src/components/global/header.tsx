@@ -13,7 +13,7 @@ export default function Header() {
                 <div className="flex items-center justify-between">
                     <Link href="/">
                         <Image
-                            className="w-30 md:w-32 lg:w-35"
+                            className="w-30 md:w-32 lg:w-40"
                             src="/tstc-logo.svg"
                             alt="TSTC Logo"
                             width={144}

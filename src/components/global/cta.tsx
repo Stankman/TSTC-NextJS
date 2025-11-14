@@ -1,16 +1,22 @@
+import { PhoneCall } from "lucide-react";
 import { Button } from "../ui/button";
-import { Section } from "./craft";
+import { Heading, Section } from "./craft";
 
-export default function CTA() {
+interface CTAProps {
+    title?: string;
+    subtitle?: string;
+}
+
+export default function CTA({ title, subtitle }: CTAProps) {
     return (
-        <Section className="bg-background-tertiary text-foreground-tertiary">
+        <Section variant="secondary" className="text-center">
             <div className="mb-5">
-                <h2 className="font-bold text-4xl mb-2">Ready to enroll?</h2>
-                <p className="font-light text-foreground-tertiary/80 text-xl">Our focus is on your success — and getting you to work fast.</p>
+                { title && <Heading size="h2" className="font-bold">{title}</Heading>}
+                { subtitle && <p className="font-light text-xl">{subtitle}</p>}
             </div>
-            <div className="grid grid-cols-5 gap-4">
-                <Button variant="default">Admissions</Button>
-                <Button variant="default">How to Pay for College</Button>
+            <div className="flex items-center justify-center gap-4">
+                <Button variant="secondary">Request More Information</Button>
+                <Button variant="default"><PhoneCall />  Call Us 254-867-3309</Button>
             </div>
         </Section>
     );

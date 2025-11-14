@@ -12,6 +12,16 @@ function NavMenubar() {
                 </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                    <Link href="/news">News</Link>
+                </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                    <Link href="/events">Events</Link>
+                </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
                 <NavigationMenuTrigger>Programs & Degrees</NavigationMenuTrigger>
                 <NavigationMenuContent>
                     <ul>

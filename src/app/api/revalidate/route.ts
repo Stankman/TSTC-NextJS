@@ -1,9 +1,11 @@
 import { revalidatePath, revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
+import { toast } from "sonner";
 
 export async function POST(request : NextRequest) {
     try {
         const requestBody = await request.json();
+
         const secret = request.headers.get("x-webhook-secret");
 
         if (secret !== process.env.WORDPRESS_WEBHOOK_SECRET) {
@@ -33,7 +35,7 @@ export async function POST(request : NextRequest) {
         }
 
         try {
-            console.log(`Revalidating content ${contentType} ${contentId ? `(ID: ${contentId})` : ""}`);
+            console.log(`Revalidating: Type => ${contentType} | ${contentId ? `(ID: ${contentId})` : ""}`);
 
             revalidateTag("wordpress");
             revalidateTag(contentType);

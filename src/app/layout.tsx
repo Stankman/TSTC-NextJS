@@ -37,9 +37,11 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <Toaster />
-            <Header />
-            {children}
-            <Footer />
+            <div id="page" className="flex flex-col h-full">
+              <Header />
+              <main className="flex-grow">{children}</main>
+              <Footer />
+            </div>
           </ThemeProvider>
         </body>
       </html>
