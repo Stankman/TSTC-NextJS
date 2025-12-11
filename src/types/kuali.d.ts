@@ -84,7 +84,7 @@ export interface KualiCourseBlock {
 export interface KualiSemester {
   label: string;
   blocks: KualiCourseBlock[];
-  totalCredits?: number;
+  totalCredits: number;
 }
 
 export interface KualiProgramRequirementsRaw {

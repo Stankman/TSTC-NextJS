@@ -21,12 +21,12 @@ export function getPricingForYear(year: number): TierPricing {
   }
 }
 
-export function calculateSpecializationCost(totalCredits: number, tier: number, year: number = 2025): number {
+export function calculateSemesterCost(totalCredits: number, isPBE: boolean = false, tier: number = 1, year: number = 2025): number {
   const pricing = getPricingForYear(year);
 
-  const pricePerCredit = pricing[tier] ?? pricing[1];
+  const pricePerCredit = pricing[tier];
 
-  return totalCredits * pricePerCredit;
+  return (isPBE && totalCredits > 12 ? 12 : totalCredits) * pricePerCredit;
 }
 
 export interface TierPricing {

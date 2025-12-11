@@ -1,12 +1,13 @@
-import { calculateKualiSpecializationPrice, processPrerequisites, processProgramRequirements } from "@/lib/kuali/kuali";
+import { processPrerequisites, processProgramRequirements } from "@/lib/kuali/kuali";
 import { fetchKualiSpecializationById } from "@/lib/kuali/specializations/kuali-specializations";
+import { calculateSemesterCost } from "@/lib/utils";
 import { KualiSpecialization } from "@/types/kuali";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
     request: NextRequest,
-    { params }: { params: { specializationId: string } }
-) {
+    { params }: { params: Promise<{ specializationId: string }> }
+): Promise<NextResponse> {
     try {
         const { specializationId } = await params;
         const { searchParams } = new URL(request.url);
@@ -14,19 +15,38 @@ export async function GET(
 
         const specializationRaw = await fetchKualiSpecializationById(specializationId);
 
-        if(!specializationRaw) {
-            return new Response(JSON.stringify({ message: "Specialization not found." }), { status: 404 }); 
+        if (!specializationRaw) {
+            return NextResponse.json(
+                { message: "Specialization not found." },
+                { status: 404 }
+            );
         }
-        
-        const semesters = specializationRaw.programRequirements 
-            ? processProgramRequirements(specializationRaw.programRequirements)
-            : [];
 
-        const totalCredits = semesters.reduce((acc, semester) => acc + (semester.totalCredits || 0), 0);
+        const semesters = specializationRaw.programRequirements 
+            ? await processProgramRequirements(specializationRaw.programRequirements)
+            : [];
 
         const prerequisites = specializationRaw.requisites 
             ? processPrerequisites(specializationRaw.requisites)
             : [];
+
+        let pricing = undefined;
+
+        if (tier) {
+            pricing = semesters.reduce((total, semester) => {
+                const isPBE = specializationRaw.modality?.pbe;
+
+                const semesterCost = calculateSemesterCost(
+                    semester.totalCredits,
+                    isPBE,
+                    tier
+                );
+
+                console.log(`${semester.label} isPBE: ${isPBE} | total credits: ${semester.totalCredits} | cost: ${semesterCost}`);
+
+                return total + semesterCost;
+            }, 0);
+        }
 
         const specialization: KualiSpecialization = {
             id: specializationRaw.id,
@@ -38,16 +58,16 @@ export async function GET(
             modalities: specializationRaw.modality,
             prerequisites,
             semesters,
-            totalCredits,
-            locations: specializationRaw.locations
+            locations: specializationRaw.locations,
+            price: pricing
         };
-
-        if(tier) {
-            await calculateKualiSpecializationPrice(specialization, tier);
-        }
 
         return NextResponse.json(specialization);
     } catch (error) {
-        
+        console.error("Error fetching specialization:", error);
+        return NextResponse.json(
+            { message: "Internal server error" },
+            { status: 500 }
+        );
     }
 }
