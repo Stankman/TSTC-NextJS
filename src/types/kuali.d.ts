@@ -10,7 +10,8 @@ export interface KualiSpecialization {
     code: string;
     semesters: KualiSemester[];
     catalogYear: string;
-    locations: string[];
+    start: string;
+    locations: KualiLocation[];
     monthsToComplete: number;
     modalities: KualiModality;
     prerequisites: string[];
@@ -31,6 +32,7 @@ export interface KualiSpecializationRaw {
   locations: string[];
   description: string;
   status: string;
+  dateStartLabel: string;
 }
 
 export interface KualiCourse {
@@ -55,15 +57,19 @@ export interface KualiCourseRaw {
   semesterCreditHours: string;
 }
 
+export interface KualiOptionRaw {
+  id: string;
+  name: string;
+  type: string;
+}
+
 export interface KualiLocation {
   id: string;
   name: string;
   code: string;
 }
 
-export interface KualiLocationRaw {
-  id: string;
-  name: string;
+export interface KualiLocationRaw extends KualiOptionRaw {
   ByOiUw4q_: string;
 }
 
