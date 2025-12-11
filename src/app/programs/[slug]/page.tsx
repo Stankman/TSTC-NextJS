@@ -33,10 +33,10 @@ export default async function Page(
                 </Suspense>
             </Section>
             <Section variant="primary">
-                <SummaryBlock />
+                <SummaryBlock description={program.acf.short_description} />
             </Section>
             <Section variant="primary">
-                <DegreePlansBlock title="Degree Plans" />
+                <DegreePlansBlock title="Degree Plans" degreePlans={program.acf.degree_plans_whitelist} tier={program.acf.tier} />
             </Section>
             <Section>
                 <GraduateSuccessBlock />

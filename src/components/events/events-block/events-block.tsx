@@ -3,6 +3,7 @@
 import { Heading } from "@/components/global/craft";
 import { Button } from "@/components/ui/button";
 import EventCard from "../event-card";
+import EventCardSkeleton from "../event-card.skeleton";
 
 interface EventsBlockProps {
     title?: string;
@@ -12,7 +13,7 @@ export default function EventsBlock({ title }: EventsBlockProps) {
     return (
         <>
             {title && <Heading size="h2">{title}</Heading>}
-            <div className="grid lg:grid-cols-3 gap-4 my-8">
+            <div className="grid lg:grid-cols-3 gap-6 my-8">
                 <EventCard
                     date={new Date()}
                     title="Extended Registration"
@@ -20,20 +21,8 @@ export default function EventsBlock({ title }: EventsBlockProps) {
                     linkUrl="#"
                     linkText="Register Today!"
                 />
-                <EventCard
-                    date={new Date()}
-                    title="Event Title 2"
-                    description="Event Description"
-                    linkUrl="#"
-                    linkText="Learn More"
-                />
-                <EventCard
-                    date={new Date()}
-                    title="Event Title 3"
-                    description="Event Description"
-                    linkUrl="#"
-                    linkText="Learn More"
-                />
+                <EventCardSkeleton />
+                <EventCardSkeleton />
             </div>
             <div className="grid grid-cols-2 lg:grid-cols-5">
                 <Button variant="default">View All Events</Button>

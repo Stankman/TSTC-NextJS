@@ -4,13 +4,17 @@ import { Heading } from "@/components/global/craft";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader } from "@/components/ui/card";
 
-export default function SummaryBlock() {
+interface SummaryBlockProps {
+    description?: string;
+}
+
+export default function SummaryBlock({ description }: SummaryBlockProps) {
     return (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div id="summary" className="col-span-2">
                 <Heading>Build the Future of Industry</Heading>
                 <p className="text-lg">
-                    Learn to maintain and service industrial equipment while mastering PLC programming, electrical systems, hydraulics, and welding. Our Advanced Manufacturing training labs simulate real-world environments, so you graduate ready to work. Industry partnerships ensure valuable experience employers want.
+                    {description}
                 </p>
             </div>
             <div id="form" className="hidden lg:block">
