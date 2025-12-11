@@ -41,9 +41,7 @@ export async function GET(
                     isPBE,
                     tier
                 );
-
-                console.log(`${semester.label} isPBE: ${isPBE} | total credits: ${semester.totalCredits} | cost: ${semesterCost}`);
-
+                
                 return total + semesterCost;
             }, 0);
         }
