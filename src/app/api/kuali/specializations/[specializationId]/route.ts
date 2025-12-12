@@ -46,6 +46,7 @@ export async function GET(
         );
 
         let pricing = undefined;
+        const totalCredits = semesters.reduce((total, semester) => total + semester.totalCredits, 0);
 
         if (tier) {
             pricing = semesters.reduce((total, semester) => {
@@ -56,7 +57,6 @@ export async function GET(
                     isPBE,
                     tier
                 );
-                
                 return total + semesterCost;
             }, 0);
         }
@@ -73,6 +73,7 @@ export async function GET(
             prerequisites,
             semesters,
             locations,
+            totalCredits,
             price: pricing
         };
 

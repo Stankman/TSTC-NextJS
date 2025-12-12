@@ -9,18 +9,6 @@ import Hero from "@/components/home/hero/hero";
 import { IndustriesAccordion } from "@/components/home/industries-accordion/industries-accordion";
 
 export default function Home() {
-  const matrix1: number[][] = [[1,2,3], [4,5,6], [7,8,9]];
-  const matrix2: number[][] = [[5,1,9,11], [2,4,8,10], [13,3,6,7], [15,14,12,16]];
-
-  const output: number[][] = [];
-
-  for (let i = 0; i < matrix1.length; i++) {
-    for (let j = 0; j < matrix1[i].length; j++) {
-      console.log(matrix1[i][j]);
-    }
-    console.log('---');
-  }
-
   return (
     <>
       <Section variant="primary">
