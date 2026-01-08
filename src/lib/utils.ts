@@ -5,11 +5,15 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function formatCurrency(amount: number | undefined): string {
+export function formatCurrency(amount: number | undefined, compact: boolean = false): string {
   if (amount === undefined) return "Unavailable";
 
-  const formatted = amount.toLocaleString('en-US');
+  const formatted = amount.toLocaleString('en-US', { notation: compact ? "compact" : "standard" });
   return `$${formatted}`;
+}
+
+export function formatPercentage(amount: number | undefined, compact: boolean = false): string {
+  return (amount === undefined) ? `--%` : `${amount}%`;
 }
 
 export function getPricingForYear(year: number): TierPricing {

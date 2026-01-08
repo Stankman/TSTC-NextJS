@@ -25,7 +25,7 @@ export default async function Page(
                         <div className="border-b border-black/10 mb-3">
                             {/* {article.date} */}
                         </div>
-                        <div id="article-content" className="text-black leading-7" dangerouslySetInnerHTML={{ __html: article.content.rendered }} />
+                        <div id="article-content" className="leading-7" dangerouslySetInnerHTML={{ __html: article.content.rendered }} />
                     </div>
                     <div className="col-span-1">
                         

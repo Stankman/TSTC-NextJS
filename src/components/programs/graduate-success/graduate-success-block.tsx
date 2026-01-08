@@ -1,12 +1,15 @@
-"use client";
-
 import { Heading } from "@/components/global/craft";
 import OnetCard from "../onet/onet-card";
 import TestimonialCard from "@/components/testimonials/testimonial-card";
 import OnetCardSkeleton from "../onet/onet-card.skeleton";
 import TestimonialCardSkeleton from "@/components/testimonials/testimonial-card.skeleton";
+import { OnetProps } from "@/types/wordpress";
 
-export default function GraduateSuccessBlock() {
+interface GraduateSuccessBlockProps {
+    serieIds: OnetProps[];
+}
+
+export default function GraduateSuccessBlock({ serieIds }: GraduateSuccessBlockProps) {
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div className="flex items-center w-full md:my-4 order-1 md:order-3 md:col-span-2 lg:max-w-2/3">
@@ -16,7 +19,7 @@ export default function GraduateSuccessBlock() {
                 <TestimonialCard />
             </div>
             <div className="flex md:justify-center order-3 md:order-2">
-                <OnetCard />
+                <OnetCard serie={serieIds[0]} />
             </div>
             <div className="flex md:justify-center order-5 md:order-4">
                 <OnetCardSkeleton />

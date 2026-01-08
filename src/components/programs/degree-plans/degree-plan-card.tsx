@@ -49,7 +49,7 @@ export default async function DegreePlanCard({ title, degreePlanId, tier }: Degr
                     <div className="size-6 bg-destructive rounded-full p-1 flex items-center justify-center">
                         <MapPin className="text-destructive-foreground" />
                     </div>
-                    <span className="text-sm">{specialization.locations.join(", ")}</span>
+                    <span className="text-sm">{specialization.locations.map((location) => location.name).join(", ")}</span>
                     {/* <span className="text-muted-foreground">No available locations</span> */}
                 </div>
                 <div id="modalities" className="space-x-2">

@@ -1,3 +1,5 @@
+import { FlexibleContent } from "./acf";
+
 export interface WordPressPaginationHeaders {
   totalResults: number;
   totalPages: number;
@@ -72,6 +74,96 @@ export interface Page extends WPEntity {
     ping_status: "open" | "closed";
     template: string;
     meta: Record<string, unknown>;
+    acf: {
+        blocks: FlexibleContentBlock[];
+    }
+}
+
+interface AccordionBlock extends FlexibleContentBlock {
+    content: {
+        header: string;
+        description: string;
+        items: {
+            title: string;
+            content: string;
+            link: ACFLink;
+        }[];
+    },
+    options: {
+        style: string;
+        position: string;
+    }
+}
+
+interface DefaultBlock extends FlexibleContentBlock {
+    content: {
+        header: string;
+        description: string;
+        image: number;
+    },
+    options: {
+        style: string;
+        position: string;
+    }
+}
+
+interface GridBlock extends FlexibleContentBlock {
+    content: {
+        header: string;
+        description: string;
+        items: {
+            title: string;
+            content: string;
+            link: ACFLink;
+        }[];
+    },
+    options: {
+        style: string;
+        columns: number;
+    }
+}
+
+interface StatsBlock extends FlexibleContentBlock {
+    content: {
+        header: string;
+        description: string;
+        items: {
+            title: string;
+            value: number;
+            type: string;
+            link: ACFLink;
+        }[];
+    },
+    options: {
+    }
+}
+
+interface TabsBlock extends FlexibleContentBlock {
+    content: {
+        header: string;
+        description: string;
+        items: {
+            title: string;
+            content: string;
+            link: ACFLink;
+        }[];
+    },
+    options: {
+        style: string;
+        position: string;
+    }
+}
+
+interface FlexibleContentBlock {
+    acf_fc_layout: string;
+    content: any;
+    options: any;
+}
+
+interface ACFLink {
+    title: string;
+    url: string;
+    target: string;
 }
 
 export interface Post extends WPEntity {
@@ -122,6 +214,11 @@ export interface Program extends Post {
     schedule: number[];
     award: number[];
     campus: number[];
+}
+
+export interface OnetProps {
+    onet_id: string;
+    onet_url: string;
 }
 
 export interface NewsArticle extends Post {

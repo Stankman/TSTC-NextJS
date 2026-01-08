@@ -39,7 +39,7 @@ export default async function Page(
                 <DegreePlansBlock title="Degree Plans" degreePlans={program.acf.degree_plans_whitelist} tier={program.acf.tier} />
             </Section>
             <Section>
-                <GraduateSuccessBlock />
+                <GraduateSuccessBlock serieIds={program.acf.onet_ids} />
             </Section>
             <Section>
                 <EventsBlock title="Upcoming Dates" />
